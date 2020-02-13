@@ -8,17 +8,22 @@ class Generator:
         self.biases = biases
 
     def model(self,x):
-
+        #hidden_1
         x = tf.matmul(x, self.weights['gen_hidden1'])
         x = tf.add(x, self.biases['gen_hidden1'])
         x = tf.nn.relu(x)
         x =tf.layers.batch_normalization(x)
-        #
+        #hidden_2
         x = tf.matmul(x, self.weights['gen_hidden2'])
         x = tf.add(x, self.biases['gen_hidden2'])
         x = tf.nn.relu(x)
-        x =tf.layers.batch_normalization(x)
-        #
+        x = tf.layers.batch_normalization(x)
+        #hidden_3
+        x = tf.matmul(x, self.weights['gen_hidden3'])
+        x = tf.add(x, self.biases['gen_hidden3'])
+        x = tf.nn.relu(x)
+        x = tf.layers.batch_normalization(x)
+        #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
         out = tf.nn.sigmoid(out)
