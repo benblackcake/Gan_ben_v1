@@ -26,6 +26,7 @@ class Generator:
         x = tf.reshape(x,[-1,28,28,1])
         x = self.__conv2d__(x, self.weights['conv_hidden'], self.biases['conv_hidden'])
         print("__DEBUG__",type(x))
+        x = tf.reshape(x,[128,784])
         #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
