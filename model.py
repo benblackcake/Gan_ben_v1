@@ -14,6 +14,11 @@ class Generator:
         x = tf.nn.relu(x)
         x =tf.layers.batch_normalization(x)
         #
+        x = tf.matmul(x, self.weights['gen_hidden2'])
+        x = tf.add(x, self.biases['gen_hidden2'])
+        x = tf.nn.relu(x)
+        x =tf.layers.batch_normalization(x)
+        #
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
         out = tf.nn.sigmoid(out)
