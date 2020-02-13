@@ -23,6 +23,9 @@ class Generator:
         # x = tf.add(x, self.biases['gen_hidden3'])
         # x = tf.nn.relu(x)
         # x = tf.layers.batch_normalization(x)
+        x = tf.reshape(x,[-1,28,28,1])
+        x = self.__conv2d__(x, self.weights['conv_hidden'], self.biases['conv_hidden'])
+        print("__DEBUG__",type(x))
         #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
@@ -34,9 +37,9 @@ class Generator:
         return -tf.reduce_mean(tf.log(discimitor_fake))
 
 
-    def __conv2d__(x, W, b, strides=1):
+    def __conv2d__(self,x, W, b, strides=1):
         # Conv2D wrapper, with bias and relu activation
-        x = tf.nn.conv2d(x, W, strides=[1, strides, strides, 1], padding='SAME')
+        x = tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
         x = tf.nn.bias_add(x, b)
         return tf.nn.relu(x)
 
