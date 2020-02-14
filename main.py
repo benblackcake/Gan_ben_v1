@@ -24,19 +24,20 @@ weights = {
     'gen_hidden1': tf.Variable(glorot_init([noise_dim, gen_hidden_dim])),
     # 'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 784])),
     'gen_hidden_1024': tf.Variable(glorot_init([gen_hidden_dim,144])),
-    'conv_hidden_64': tf.Variable(tf.random_normal([3, 3, 16, 32])),
-    'flate': tf.Variable(tf.random_normal([288])),
+    'conv_hidden_64': tf.Variable(tf.random_normal([3, 3, 16, 2])),
+    'flate': tf.Variable(tf.random_normal([18])),
     # 'gen_hidden3': tf.Variable(glorot_init([64, 128])),
-    'gen_out': tf.Variable(glorot_init([16, image_dim])),
+    'gen_out': tf.Variable(glorot_init([18, image_dim])),
 
     'disc_hidden1': tf.Variable(glorot_init([image_dim, disc_hidden_dim])),
     'disc_out': tf.Variable(glorot_init([disc_hidden_dim, 1])),
 }
+
 biases = {
     'gen_hidden1': tf.Variable(tf.zeros([gen_hidden_dim])),
     'gen_hidden2': tf.Variable(glorot_init([784])),
     'gen_hidden_1024': tf.Variable(glorot_init([144])),
-    'conv_hidden_64': tf.Variable(tf.random_normal([32])),
+    'conv_hidden_64': tf.Variable(tf.random_normal([2])),
     'flate': tf.Variable(glorot_init([64])),
     # 'gen_hidden3': tf.Variable(glorot_init([128])),
     'gen_out': tf.Variable(tf.zeros([image_dim])),

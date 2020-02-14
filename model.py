@@ -29,8 +29,9 @@ class Generator:
         print("__DEBUG__",type(x))
         print(x)
 
-        x = tf.reshape(x, [self.weights['flate'].get_shape().as_list()[0],16])
+        x = tf.reshape(x, [-1, self.weights['flate'].get_shape().as_list()[0]])
         #
+        print(x)
         #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
