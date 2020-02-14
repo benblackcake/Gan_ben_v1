@@ -42,7 +42,7 @@ biases = {
 
     #Discriminator
     'disc_hidden1': tf.Variable(tf.zeros([disc_hidden_dim])),
-    'disc_hidden2': tf.Variable(glorot_init([64])),
+    'disc_hidden2': tf.Variable(glorot_init([512])),
     # 'conv_D_hidden_64': tf.Variable(tf.random_normal([32])),
     'disc_out': tf.Variable(tf.zeros([1])),
 }
