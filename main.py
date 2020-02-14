@@ -29,9 +29,9 @@ weights = {
 
     # Discriminator
     'disc_hidden1': tf.Variable(glorot_init([image_dim, disc_hidden_dim])),
-    'disc_hidden2': tf.Variable(glorot_init([disc_hidden_dim, 256])),
+    'disc_hidden2': tf.Variable(glorot_init([disc_hidden_dim, 512])),
     # 'conv_D_hidden_64': tf.Variable(tf.random_normal([3, 3, 16, 32])),
-    'disc_out': tf.Variable(glorot_init([256, 1])),
+    'disc_out': tf.Variable(glorot_init([512, 1])),
 }
 biases = {
     #Generator
