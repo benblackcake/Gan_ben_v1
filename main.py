@@ -23,9 +23,9 @@ def glorot_init(shape):
 weights = {
     # Generator
     'gen_hidden1': tf.Variable(glorot_init([noise_dim, gen_hidden_dim])),
-    'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 784])),
-    'conv_hidden_64': tf.Variable(tf.random_normal([5, 5, 1, 32])),
-    'gen_out': tf.Variable(glorot_init([7*7*64, image_dim])),
+    'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 1024])),
+    'conv_hidden_64': tf.Variable(tf.random_normal([5, 5, 16, 32])),
+    'gen_out': tf.Variable(glorot_init([4*4*32, image_dim])),
 
     # Discriminator
     'disc_hidden1': tf.Variable(glorot_init([image_dim, disc_hidden_dim])),
@@ -36,7 +36,7 @@ weights = {
 biases = {
     #Generator
     'gen_hidden1': tf.Variable(tf.zeros([gen_hidden_dim])),
-    'gen_hidden2': tf.Variable(tf.zeros([784])),
+    'gen_hidden2': tf.Variable(tf.zeros([1024])),
     'conv_hidden_64': tf.Variable(tf.zeros([32])),
     'gen_out': tf.Variable(tf.zeros([image_dim])),
 

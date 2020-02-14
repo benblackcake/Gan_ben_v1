@@ -19,12 +19,13 @@ class Generator:
         x = tf.nn.relu(x)
         x = tf.layers.batch_normalization(x)
         #
-        x = tf.reshape(x, [-1, 28, 28, 1])
+        x = tf.reshape(x, [-1, 8, 8, 16])
         print(x)
         x = self.__conv2d__(x, self.weights['conv_hidden_64'], self.biases['conv_hidden_64'])
+        x = self.__maxpool2d__(x, k=2)
+        print(x)
         x = tf.reshape(x, [-1, self.weights['gen_out'].get_shape().as_list()[0]])
         #
-        print(x)
         #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
@@ -42,7 +43,7 @@ class Generator:
         x = tf.nn.bias_add(x, b)
         return tf.nn.relu(x)
 
-    def __maxpool2d__(x, k=2):
+    def __maxpool2d__(self,x, k=2):
         # MaxPool2D wrapper
         return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1],
                               padding='SAME')
