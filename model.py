@@ -22,7 +22,7 @@ class Generator:
         x = tf.reshape(x, [-1, 28, 28, 1])
         print(x)
         x = self.__conv2d__(x, self.weights['conv_hidden_64'], self.biases['conv_hidden_64'])
-        x = tf.reshape(x, [-1, 28*28*32])
+        x = tf.reshape(x, [-1, self.weights['gen_out'].get_shape().as_list()[0]])
         #
         print(x)
         #output_layer

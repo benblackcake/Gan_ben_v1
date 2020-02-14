@@ -25,7 +25,7 @@ weights = {
     'gen_hidden1': tf.Variable(glorot_init([noise_dim, gen_hidden_dim])),
     'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 784])),
     'conv_hidden_64': tf.Variable(tf.random_normal([5, 5, 1, 32])),
-    'gen_out': tf.Variable(glorot_init([25088, image_dim])),
+    'gen_out': tf.Variable(glorot_init([7*7*64, image_dim])),
 
     # Discriminator
     'disc_hidden1': tf.Variable(glorot_init([image_dim, disc_hidden_dim])),
