@@ -25,9 +25,9 @@ weights = {
     # 'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 784])),
     'gen_hidden_1024': tf.Variable(glorot_init([gen_hidden_dim,144])),
     'conv_hidden_64': tf.Variable(tf.random_normal([3, 3, 16, 32])),
-    'flate': tf.Variable(tf.random_normal([3*3*32,288])),
+    'flate': tf.Variable(tf.random_normal([288])),
     # 'gen_hidden3': tf.Variable(glorot_init([64, 128])),
-    'gen_out': tf.Variable(glorot_init([288, image_dim])),
+    'gen_out': tf.Variable(glorot_init([16, image_dim])),
 
     'disc_hidden1': tf.Variable(glorot_init([image_dim, disc_hidden_dim])),
     'disc_out': tf.Variable(glorot_init([disc_hidden_dim, 1])),
