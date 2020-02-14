@@ -22,7 +22,7 @@ class Generator:
         x = tf.reshape(x, [-1, 5, 5, 16])
         print(x)
         x = self.__conv2d__(x, self.weights['conv_hidden_64'], self.biases['conv_hidden_64'])
-        x = self.__maxpool2d__(x, k=2)
+        # x = self.__maxpool2d__(x, k=2)
         print(x)
         x = tf.reshape(x, [-1, self.weights['gen_out'].get_shape().as_list()[0]])
         #
