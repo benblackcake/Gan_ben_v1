@@ -19,10 +19,10 @@ class Generator:
         x = tf.nn.relu(x)
         x = tf.layers.batch_normalization(x)
         #
-        x = tf.reshape(x, [-1, 5, 5, 16])
+        x = tf.reshape(x, [-1, 28, 28, 1])
         print(x)
         x = self.__conv2d__(x, self.weights['conv_hidden_64'], self.biases['conv_hidden_64'])
-        x = tf.reshape(x, [-1, 5*5*32])
+        x = tf.reshape(x, [-1, 28*28*32])
         #
         print(x)
         #output_layer
