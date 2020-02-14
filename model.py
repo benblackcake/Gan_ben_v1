@@ -14,10 +14,10 @@ class Generator:
         x = tf.nn.relu(x)
         x =tf.layers.batch_normalization(x)
         #hidden_2
-        x = tf.matmul(x, self.weights['gen_hidden2'])
-        x = tf.add(x, self.biases['gen_hidden2'])
-        x = tf.nn.relu(x)
-        x = tf.layers.batch_normalization(x)
+        # x = tf.matmul(x, self.weights['gen_hidden2'])
+        # x = tf.add(x, self.biases['gen_hidden2'])
+        # x = tf.nn.relu(x)
+        # x = tf.layers.batch_normalization(x)
         #hidden_3
         x = tf.matmul(x, self.weights['gen_hidden_1024'])
         x = tf.add(x, self.biases['gen_hidden_1024'])

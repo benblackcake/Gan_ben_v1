@@ -22,8 +22,8 @@ def glorot_init(shape):
     return tf.random_normal(shape=shape, stddev=1. / tf.sqrt(shape[0] / 2.))
 weights = {
     'gen_hidden1': tf.Variable(glorot_init([noise_dim, gen_hidden_dim])),
-    'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 784])),
-    'gen_hidden_1024': tf.Variable(glorot_init([784,1024])),
+    # 'gen_hidden2': tf.Variable(glorot_init([gen_hidden_dim, 784])),
+    'gen_hidden_1024': tf.Variable(glorot_init([gen_hidden_dim,1024])),
     'conv_hidden_64': tf.Variable(tf.random_normal([8, 8, 16, 64])),
     'flate': tf.Variable(tf.random_normal([8*8*64,1024])),
     # 'gen_hidden3': tf.Variable(glorot_init([64, 128])),
