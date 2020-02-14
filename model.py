@@ -19,14 +19,15 @@ class Generator:
         x = tf.nn.relu(x)
         x = tf.layers.batch_normalization(x)
         #hidden_3
-        # x = tf.matmul(x, self.weights['gen_hidden3'])
-        # x = tf.add(x, self.biases['gen_hidden3'])
-        # x = tf.nn.relu(x)
-        # x = tf.layers.batch_normalization(x)
-        x = tf.reshape(x,[-1,28,28,1])
-        x = self.__conv2d__(x, self.weights['conv_hidden'], self.biases['conv_hidden'])
+        x = tf.matmul(x, self.weights['gen_hidden_1024'])
+        x = tf.add(x, self.biases['gen_hidden_1024'])
+        x = tf.nn.relu(x)
+        x = tf.layers.batch_normalization(x)
+        #
+        x = tf.reshape(x,[-1,8,8,16])
+        x = self.__conv2d__(x, self.weights['conv_hidden_64'], self.biases['conv_hidden_64'])
         print("__DEBUG__",type(x))
-        x = tf.reshape(x,[784,128])
+        # x = tf.reshape(x,[784,128])
         #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
