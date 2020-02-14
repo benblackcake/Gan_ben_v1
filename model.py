@@ -31,7 +31,7 @@ class Generator:
         #output_layer
         out = tf.matmul(x, self.weights['gen_out'])
         out = tf.add(out, self.biases['gen_out'])
-        out = tf.nn.sigmoid(out)
+        out = tf.nn.relu(out)
         ##
         return out
 
@@ -75,7 +75,7 @@ class Discriminator:
         #output
         out = tf.matmul(x, self.weights['disc_out'])
         out = tf.add(out, self.biases['disc_out'])
-        out = tf.nn.sigmoid(out)
+        out = tf.nn.relu(out)
         #
 
 
