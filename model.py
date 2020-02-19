@@ -75,13 +75,18 @@ class Discriminator:
         out = tf.add(out, self.biases['disc_out'])
         out = tf.nn.sigmoid(out)
         #
-
-
         return out
+
+    def loss(self,discimitor_real,discimitor_fake):
+        return -tf.reduce_mean(tf.log(discimitor_real) + tf.log(1. - discimitor_fake))
+
     def __conv2d__(self,x, W, b, strides=1):
         # Conv2D wrapper, with bias and relu activation
         x = tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
         x = tf.nn.bias_add(x, b)
         return tf.nn.relu(x)
-    def loss(self,discimitor_real,discimitor_fake):
-        return -tf.reduce_mean(tf.log(discimitor_real) + tf.log(1. - discimitor_fake))
+
+    def __maxpool2d__(self,x, k=2):
+        # MaxPool2D wrapper
+        return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1],
+                              padding='SAME')
